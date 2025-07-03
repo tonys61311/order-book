@@ -7,7 +7,7 @@
 
 ## GitHub Pages 展示
 
-[Demo](https://github.com/tonys61311/order-book)
+[Demo](https://tonys61311.github.io/order-book)
 
 ## 專案結構
 
