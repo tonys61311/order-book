@@ -91,7 +91,7 @@ export abstract class BaseSocket {
     let env: WsEnvelope;
     try {
       env = JSON.parse(raw);
-      console.log('Received', env);
+      // console.log('Received', env);
     } catch {
       return; // 非 JSON 直接略過
     }
