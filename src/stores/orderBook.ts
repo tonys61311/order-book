@@ -138,16 +138,10 @@ export const useOrderBookStore = defineStore('orderBook', {
       this.updateOrderBookSocket = new UpdateOrderBookSocket()
       await this.updateOrderBookSocket.connect()
 
-      // test
-      setTimeout(() => {
-          this.orderBookData!.seqNum = 0; // 更新 seqNum
-          console.log('[OrderBook] Socket connected, initial seqNum:', this.orderBookData?.seqNum);
-        }, 5000) // 確保 Vue 能更新狀態
-
       const listener = async (data: OrderBookData) => {
         // 判斷 新 data 的 prevSeqNum 若不等於 上一筆 data 的 seqNum，則 Re-subscribe
         if (this.orderBookData && this.orderBookData.seqNum !== data.prevSeqNum) {
-          console.warn('[OrderBook] Sequence number mismatch, re-subscribing...')
+          console.warn('[OrderBook] Sequence number mismatch, re-subscribing...', 'lastData SeqNum:', this.orderBookData.seqNum, ' nowdata prevSeqNum:', data.prevSeqNum)
           this.orderBookData = null; // 清除舊資料
           await this.updateOrderBookSocket?.resubscribeUpdate(this.symbol, this.grouping, listener)
           return;
