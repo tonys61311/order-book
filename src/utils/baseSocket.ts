@@ -80,8 +80,8 @@ export abstract class BaseSocket {
   /** 單行 helper：清掉 topic 內所有 listener */
   protected removeTopicListeners(topic: string) {
     console.info('[WS] Removing listeners for topic →', topic);
-    console.info('[WS] Remaining topics →', this.topicMap);
     this.topicMap.delete(topic);
+    console.info('[WS] Remaining topics →', this.topicMap);
   }
 
   /* ──────────────── INTERNAL ──────────────── */
