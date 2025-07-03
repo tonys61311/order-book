@@ -106,7 +106,7 @@ src/                              # 主要程式碼
 
 ## 程式邏輯與核心功能
 
-### 1. 功能首頁 [`OrderBookPanel.vue`](#1-功能首頁-orderbookpanelvue)
+### 1. 功能首頁 [`OrderBookPanel.vue`](./src/views/OrderBookPanel.vue)
 
 整合委託簿資料、即時價格與買賣深度視覺呈現。
 
@@ -122,14 +122,14 @@ src/                              # 主要程式碼
 
 ### 2. 狀態管理 (Pinia)
 
-#### [`stores/orderBook.ts`](#2-狀態管理-pinia)
+#### [`stores/orderBook.ts`](./src/stores/orderBook.ts)
 
 - 管理買賣盤資料：
   - 買方、賣方報價列表
   - 累積量計算
   - 委託簿更新時自動觸發資料轉換
 
-#### [`stores/price.ts`](#2-狀態管理-pinia)
+#### [`stores/price.ts`](./src/stores/price.ts)
 
 - 管理最新成交價格：
   - 計算價格漲跌趨勢
@@ -154,7 +154,7 @@ src/                              # 主要程式碼
 
 ---
 
-### 核心 `baseSocket.ts`
+### 核心 [`baseSocket.ts`](./src/utils/baseSocket.ts)
 
 `BaseSocket` 為抽象基底類別，提供：
 
@@ -169,7 +169,7 @@ src/                              # 主要程式碼
 
 ### 功能封裝
 
-#### `orderBookSocket.ts`
+#### [`orderBookSocket.ts`](./src/services/orderBookSocket.ts)
 
 `OrderBookSocket` 繼承 `BaseSocket`，提供：
 
@@ -179,7 +179,7 @@ src/                              # 主要程式碼
 
 ---
 
-#### `updateOrderBookSocket.ts`
+#### [`updateOrderBookSocket.ts`](./src/services/updateOrderBookSocket.ts)
 
 專責處理「委託簿更新」資料：
 
@@ -189,7 +189,7 @@ src/                              # 主要程式碼
 
 ---
 
-#### `tradeHistorySocket.ts`
+#### [`tradeHistorySocket.ts`](./src/services/tradeHistorySocket.ts)
 
 專責處理「成交記錄」資料：
 
@@ -199,12 +199,12 @@ src/                              # 主要程式碼
 
 ---
 
-### 4. 組合式邏輯 [`composable/useOrderBookRows.ts`](#4-組合式邏輯-composableuseorderbookrowsts)
+### 4. 組合式邏輯 [`composable/useOrderBookRows.ts`](./src/composable/useOrderBookRows.ts)
 
 封裝委託簿資料轉換邏輯：
 
 - 計算累積量與百分比。
-- 結合 `tradeSideTheme` 主題色，標示買賣方不同顏色。
+- 結合 [`tradeSideTheme`](./src/utils/tradeSideTheme.ts) 主題色，標示買賣方不同顏色。
 - 轉換為 `TableCellModel` 陣列，供 [`TableView`](#5-表格呈現元件-tableview) 使用。
 
 **優點：**
@@ -214,11 +214,11 @@ src/                              # 主要程式碼
 
 ---
 
-### 5. 表格呈現元件 [`TableView`](#5-表格呈現元件-tableview)
+### 5. 表格呈現元件 [`TableView`](./src/components/tableView/TableView.vue)
 
 專責資料列表呈現，完全不處理邏輯：
 
-- 透過 `TableCellModel` 陣列決定每列顯示內容。
+- 透過 [`TableCellModel`](./src/types/TableViewModel.ts) 陣列決定每列顯示內容。
 - 顯示項目：
   - 價格、數量、累積量百分比進度條
 - 特點：
