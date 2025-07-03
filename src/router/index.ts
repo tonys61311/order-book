@@ -1,11 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '@/views/Home.vue'
 import OrderBookPanel from '@/views/OrderBookPanel.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'OrderBookPanel',
     component: OrderBookPanel,
   },
 ]
